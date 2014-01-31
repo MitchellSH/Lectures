@@ -1,4 +1,3 @@
-/* jshint unused:false */
 
 var Shelter = (function(){
 
@@ -26,5 +25,8 @@ var Shelter = (function(){
     this.animals.push(animal);
   };
 
+  Shelter.prototype.animalCount = function(){
+    return animals.length;
+  };
   return Shelter;
 })();

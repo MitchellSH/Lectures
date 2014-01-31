@@ -46,13 +46,19 @@ test( 'Shelter#setHours()', function(){
 
 test( 'Shelter#addAnimal()', function(){
     var s1 = new Shelter('Green Hills Shelter');
+
     var a1 = new Animal('fido');
+    var a2 = new Animal('fluffy');
+    var a3 = new Animal('ferby');
+
     s1.addAnimal(a1);
+    s1.addAnimal(a2);
+    s1.addAnimal(a3);
 
+    var a4 = s1.placeAnimal('fido');
 
-    ok(s1.animals.length === 1, 's1 should have 1 item in array');
-    ok(s1.animals[0] instanceof Animal, 's1 should have 1 animal');
-    deepEqual(s1.animals[0].name, 'fido', 'fido shouldbe in the shelter');
+    deepEqual(s1.animalCount, 's1 should have 1 item in array');
+    DeepEqual(a4.name, 's1 should have 1 item in array');
 
   });
 
