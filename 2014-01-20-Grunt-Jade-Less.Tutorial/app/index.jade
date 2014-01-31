@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+ head
+   meta(charset='utf-8')
+   title Jade Tutorial 
+   link(rel='stylesheet', href='/css/style.css')
+   script(src='/js/vendor/jquery-1.10.2.js')
+   script(src='/js/source/main.js')
+
+ body
+   header
+     h1 Welcome to Jade!
+     img(src='http://o.aolcdn.com/hss/storage/adam/70fa60fa8f070ec08d80359215f4ec95/001-2015-subaru-wrx-sti-leaked_628opt.jpg')
+  #section1
+    ul
+      li a
+      li b
+      li c
+    - var firstName = "Mitch";
+    h2= firstName
+    - for(var i = 0; i < 100; i++)
+      h3= i
+      h2 Who?
+  #section2
+     h2 Section 1
+     p This is Paragragh 1
+     p
+       | This is Paragragh 2
+       br
+       | Addendum <strong>to</strong> paragragh 2
+       span Span 1
+     footer.foot1.foot2#footerid
+

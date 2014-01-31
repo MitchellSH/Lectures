@@ -1,0 +1,45 @@
+@import url(http://fonts.googleapis.com/css?family=The+Girl+Next+Door);
+
+header{
+  color : white;
+  border : 1px dashed orange;
+}
+
+header h1{
+  margin-left: 20px;
+  font-family: 'The Girl Next Door', cursive;
+  font-size: 75px;
+}
+
+body{
+  background: url(/images/tile.jpg) repeat;
+}
+
+p{
+  font-family: 'The Girl Next Door', cursive;
+  color : white;
+}
+
+article{
+  font-family: 'The Girl Next Door', cursive;
+  color : skyblue;
+}
+
+a{
+  border: 1px solid purple; 
+  color: white;
+  background-color: skyblue;
+  padding: 3px;
+  letter-spacing: 2px;
+  border-radius: 10px;
+  font-family: 'The Girl Next Door', cursive;
+}
+
+a:hover{
+  background-color: orange;
+  color: black;
+}
+
+footer{
+  color: white;
+}

@@ -1,0 +1,122 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  background-image: url(images/bg-sand.png);
+  background-repeat: url(images/bg-sand.png);
+}
+
+
+div#main{
+  width: 960px;
+  margin: 0px auto;
+}
+
+h1{
+  font-family: 'Open Sans', sans-serif;
+  color: #c13832;
+  font-size: 84px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin: 0px;
+  text-align: center;
+}
+
+h2{
+  font-size: 55px;
+  letter-spacing: -0.025em;
+  margin: 10px;
+  font-weight: 400;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+nav a{
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+
+nav a:hover{
+  text-decoration: underline;
+}
+
+nav li{
+  list-style-type: none;
+  display: inline-block;
+  padding: 12px;
+}
+
+nav ul{
+  float: right;
+}
+
+.clear{
+  clear: both;
+}
+
+.accordian li{
+  width: 245px;
+  height: 380px;
+  display: inline-block;
+  overflow: hidden;
+  background-color: #424f5a;
+  margin: -4px;
+  text-align: center;
+
+
+}
+
+.divaccord{
+  margin: auto;
+}
+
+#one{
+  box-shadow: 5px 5px 30px;
+
+}
+
+h3{
+  color: white;
+}
+
+#two{
+  box-shadow: 5px 5px 30px;
+  background: linear-gradient(blue, darkblue);
+}
+
+h4{
+  color: white;
+}
+#three{
+  box-shadow: 5px 5px 30px;
+  background: linear-gradient(orange, darkorange);
+}
+
+#four{
+  background: linear-gradient(#ADADAD, white);
+  box-shadow: 5px 5px 30px;
+}
+
+div#logo{
+  text-align: center;
+  width: 960px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+div#news{
+  text-align: center;
+}
+
+footer{
+  text-align: center;
+}

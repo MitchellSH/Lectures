@@ -1,0 +1,142 @@
+@import url(http://fonts.googleapis.com/css?family=Exo+2:400,100);
+
+td.numbers{
+  float:left;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  margin:8px;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 50px;
+  border-color: #00ff99;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.numbers:hover{
+  background-color: #00ff99;
+  color: white;
+}
+
+td.symbols{
+  float: left;
+  text-align: center;
+  padding: 20px;
+  margin: 8px;
+  width: 20px;
+  height: 20px;
+  color: black;
+  border: 1px solid;
+  border-radius: 50px;
+  border-color: #cc00ff;
+  font-family: 'Exo 2', sans-serif;
+  
+}
+
+.symbols:hover{
+  background-color: #cc00ff;
+  color: white;
+}
+
+#push{
+  float:left;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  padding:20px;
+  margin:8px;
+  border: 1px solid;
+  border-radius: 50px;
+  border-color: #6600ff;
+  font-family: 'Exo 2', sans-serif;
+}
+
+#push:hover{
+  background-color: #6600ff;
+  color: white;
+}
+#sum{
+  float:left;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  padding:20px;
+  margin:8px;
+  border: 1px solid;
+  border-radius: 50px;
+  border-color: #00ffff;
+  font-family: 'Exo 2', sans-serif;
+}
+
+#sum:hover{
+  background-color: #00ffff;
+  color: white;
+}
+#sign{
+  float:left;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  padding:20px;
+  margin:8px;
+  border: 1px solid;
+  border-radius: 50px;
+  border-color: #00ffff;
+  font-family: 'Exo 2', sans-serif;
+}
+
+#sign:hover{
+  background-color: #00ffff;
+  color: white;
+}
+#pow{
+  float:left;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  padding:20px;
+  margin:8px;
+  border: 1px solid;
+  border-radius: 50px;
+  border-color: #00ffff;
+  font-family: 'Exo 2', sans-serif;
+}
+
+#pow:hover{
+  background-color: #00ffff;
+  color: white;
+}
+
+#answer{
+  border: 1px solid;
+  margin: 10px;
+  width: 280px;
+  height: 25px;
+  float: top;
+  text-align: right;
+  padding: 10px;
+  border-radius: 20px;
+  border-color: #ff00ff;
+  font-family: 'Exo 2', sans-serif;
+}
+#queue{
+  border: 1px solid;
+  margin: 10px;
+  width: 280px;
+  height: 80px;
+  float: top;
+  text-align: right;
+  padding: 10px;
+  border-radius: 20px;
+  border-color: #ffcc00;
+  font-family: 'Exo 2', sans-serif;
+}
+
+#clear{
+ border-color: yellow;
+}
+
+#clear:hover{
+  background-color: yellow;
+}
+

@@ -1,0 +1,129 @@
+doctype html
+//[if IE 9]><html class="lt-ie10" lang="en" > <![endif]
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Animal Shelter
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/foundation.css')
+    link(rel='stylesheet', href='/css/app.css')
+    script(src='/js/vendor/modernizr.js')
+  body
+    .row
+      .small-12.columns
+        .panel
+<<<<<<< HEAD
+          img#k9(src='http://www.thinkgeek.com/images/blog/2011pumpkin-1-icon.jpg') 
+          img#k10(src='http://files.gamebanana.com/img/ico/sprays/brian_stewie_soldiers.png') 
+          img#k11(src='http://fs02.androidpit.info/ali/x47/4277347-1374814329482-144x144.png') 
+          img#k12(src='http://th00.deviantart.net/fs70/200H/f/2010/091/9/8/pikachu_by_Watermelon93.jpg') 
+          h1 Animal Shelter
+    .row
+      .small-12.columns
+=======
+          h1 Animal Shelter
+    .row
+      .small-8.columns
+>>>>>>> 31a80baf1b40b8d3b19fad59d50c1ec76f5b9435
+        .form
+          .fieldset
+            .legend Animal Form
+              .row
+                .small-4.columns
+<<<<<<< HEAD
+                  label Species
+                  input(type="text", placeholder="Species")#species
+                .small-4.columns
+                  label Color
+                  input(type="text", placeholder="Color")#color
+                .small-4.columns
+                  label Name
+                  input(type="text", placeholder="Name")#name
+              .row
+                .small-4.columns
+                  label Age
+                  input(type="text", placeholder="Age")#age
+                .small-4.columns#gender
+                  label Gender
+                  input(type="radio", name="gender", value="male", id="male")
+                  label(for="male") Male
+                  input(type="radio", name="gender", value="female", id="female")
+                  label(for="female") Female
+                .small-4.columns
+                  .row.collapse
+                    label Photo
+                  .small-12.columns
+                    input(type="text", placeholder="URL")#photo
+              .row
+                .small-4.columns.right
+                  button.tiny.right.radius#add-photo Add Photo
+
+              .row
+                .small-12.columns#photos
+
+              .row
+                .small-12.columns
+                  label Description
+                  textarea(placeholder="Description")#description
+
+              .row
+                .small-4.columns
+                  button.medium.radius#add-animal Add Animal
+              .row
+                .small-12-.small-centered.columns
+                  table#animalTable.small-centered
+                    thead
+                      tr
+                        td Species
+                        td Color
+                        td Name
+                        td Age
+                        td Gender
+                        td Description
+                    tfoot
+                    tbody
+                      tr
+=======
+                  label Color
+                  input#color(type='text', placeholder='Color', autofocus=true)
+                .small-4.columns
+                  label Age
+                  input#age(type='text', placeholder='Age')
+                .small-4.columns
+                  label Gender
+                  input#gender(type='text', placeholder='Gender')
+              .row
+                .small-6.columns
+                  label Species
+                  input#species(type='text', placeholder='Species')
+                .small-6.columns
+                  label Name
+                  input#name(type='text', placeholder='Name')
+              .row
+                .small-12.columns
+                  label Description
+                  textarea#description
+              .row
+                .small-8.columns
+                  label Photo
+                  input#photo(type='text', placeholder='Photo')
+                  button.tiny#add-photo Add Photo
+                  
+              .row
+                .small-12.columns
+                  #photos
+              .row
+                .small-4.columns
+                  label &nbsp;
+                  button#add-animal Add Animal
+
+>>>>>>> 31a80baf1b40b8d3b19fad59d50c1ec76f5b9435
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/foundation.js')
+    script(src='/js/vendor/lodash.js')
+    script(src='/js/source/animal.js')
+    script(src='/js/source/main.js')
+    script.
+      $(document).foundation()
+

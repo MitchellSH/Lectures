@@ -1,0 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Monda);
+p{
+  font-size: 30px;
+}
+
+.cp{
+  font-family: 'Monda', sans-serif;
+}
+
+.alert{
+  background-color: red;
+}
+
+.success{
+  background-color: green;
+}
+
+

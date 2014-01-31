@@ -1,0 +1,52 @@
+@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two);
+*{
+font-family: 'Shadows Into Light Two', cursive;
+}
+h1{
+margin-left: 50px;
+color: purple;
+font-family: 'Shadows Into Light Two', cursive;
+}
+
+div{
+color: skyblue;
+}
+
+a[href]{
+  border: 1px solid red;
+}
+
+a[href="http://bungie.net"]{
+  background-color: lime;
+}
+
+#first-name{
+  color: purple;
+  background-color: lavender;
+}
+
+#last-name{
+  color: red;
+}
+
+.name{
+  font-size: 12px;
+}
+
+#one{
+  border: 1px dashed blue;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.x1{
+  color: red;
+}
+
+div#one p{
+  background-color: maroon;
+}
+
+div#one > p{
+  letter-spacing: 4px;
+}

@@ -1,0 +1,49 @@
+<<<<<<< HEAD
+@import url(http://fonts.googleapis.com/css?family=Finger+Paint);
+body {
+  background: linear-gradient(to left, #add8e6, #ffffff);
+  font-family: 'Finger Paint', cursive;
+}
+.panel {
+  background-color: white;
+}
+#k9 {
+  width: 80px;
+  height: 80px;
+}
+#k10 {
+  width: 80px;
+  height: 80px;
+}
+#k11 {
+  width: 80px;
+  height: 80px;
+}
+#k12 {
+  width: 80px;
+  height: 80px;
+}
+h1 {
+  font-family: 'Finger Paint', cursive;
+}
+.photoDiv {
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin: 10px;
+  border: 3px solid lightblue;
+  border-radius: 100%;
+=======
+@import url(http://fonts.googleapis.com/css?family=The+Girl+Next+Door);
+body {
+  background: linear-gradient(to right, #00b7ea, #ffffff);
+  font-family: 'The Girl Next Door', cursive;
+}
+label {
+  color: blue;
+}
+h1 {
+  font-family: 'The Girl Next Door', cursive;
+>>>>>>> 31a80baf1b40b8d3b19fad59d50c1ec76f5b9435
+}
