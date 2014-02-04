@@ -38,5 +38,19 @@ var Portfolio = (function(){
     });
   }
   
+  Portfolio.prototype.delStock = function(input){
+      var stocks = [].concat(input);
+
+      var output = _.remove(this._stocks, function(stock){
+          return _.contains(stocks, stock.symbol);
+        });
+
+      if(typeof input === 'string'){
+        output = output[0];
+      }
+
+      return output;
+    };
+  
   return Portfolio;
 })();
