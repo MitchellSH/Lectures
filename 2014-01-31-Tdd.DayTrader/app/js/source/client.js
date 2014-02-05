@@ -1,5 +1,5 @@
 /* jshint unused:false */
-
+/* global Stock:false */
 var Client = (function(){
 
   'use strict';
@@ -12,45 +12,68 @@ var Client = (function(){
   Object.defineProperty(Client.prototype, 'portfolioCount', {
     get: function(){return this._portfolios.length;}
   });
+
+  Client.protoype.purchaseStock = function(symbol, amount, fn){
+    var self = this;
+    var url = 'http://dev.markitondemand.com/Api/v2/Quote/jsonp?symbol=' + symbol + '&callback=?';
+    
+    $.getJSON(url, function(quote){
+      var stock;
+      var total = quote.LastPrice * amount;
+
+      if(self.cash - total >= 0){
+        stock = new Stock(symbol, amount, quote.LastPrice);
+        self.cash -= total;
+      }
+
+      fn(stock);
+    });
+  };
+  
+  Client.protoype.sellStock = function(stock, amount, fn){
+    var self = this;
+    var url = 'http://dev.markitondemand.com/Api/v2/Quote/jsonp?symbol=' + stock.symbol + '&callback=?';
+    
+    $.getJSON(url, function(quote){
+      if(amount <= stock.shares){
+        var total = quote.LastPrice * amount;
+        self.cash += total;
+        stock.shares -= amount;
+      }
+
+      fn(stock);
+    });
+  };
+
+  
   
   Client.prototype.addPortfolio = function(input){
-      this._portfolios.push(input);
-      this._portfolios = _.flatten(this._portfolios);
-    };
+    this._portfolios =  this._portfolios.concat(input);
+  };
   
   Client.prototype.getPortfolio = function(input){
-      var output;
+      var names = [].concat(input);
+      
+      var output = _.filter(this._portfolios, function(portfolio){
+        return _.contains(names, portfolio.name);
+      });
 
-      if(typeof input === 'string'){
-        output = findPortfolio(input, this._portfolios);
-      } else {
-        output = _.map(input, function(symbol){
-          return findPortfolio(symbol, this._portfolios);
-        }, this);
-      }
+      if(typeof input === 'string'){ output = output[0]; }
 
       return output;
     };
-  
-  function findPortfolio(symbol, portfolios){
-    return _.find(portfolios, function(portfolio){
-      return symbol === portfolio.symbol;
-    });
-  }
-  
   Client.prototype.delPortfolio = function(input){
-      var portfolios = [].concat(input);
+      var names = [].concat(input);
 
       var output = _.remove(this._portfolios, function(portfolio){
-          return _.contains(portfolios, portfolio.symbol);
-        });
+        return _.contains(names, portfolio.name);
+      });
 
-      if(typeof input === 'string'){
-        output = output[0];
-      }
+      if(typeof input === 'string'){ output = output[0]; }
 
       return output;
     };
-  
+
   return Client;
 })();
+

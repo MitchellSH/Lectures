@@ -15,7 +15,8 @@ var Stock = (function(){
   });
 
   Object.defineProperty(Stock.prototype, 'shares', {
-    get: function(){return this._shares;}
+    get: function(){return this._shares;},
+    set: function(shares){this._shares = shares;}
   });
   
   Object.defineProperty(Stock.prototype, 'purchaseAmount', {

@@ -1,4 +1,4 @@
-/* global asyncTest:false, Client:false, Portfolio:false, start:false, test:false, throws:false, deepEqual:false, Stock:false, ok:false */
+/* global asyncTest:false, stop:false, Client:false, Portfolio:false, start:false, test:false, throws:false, deepEqual:false, Stock:false, ok:false */
 
 'use strict';
 
@@ -8,10 +8,6 @@ test( 'Stock#new', function(){
   throws(function(){
     s1.symbol = 'abc';
   }, 'should not be able to set symbol on s1');
-
-  throws(function(){
-    s1.shares = 'abc';
-  }, 'should not be able to set shares on s1');
 
   throws(function(){
     s1.purchaseAmount = 'abc';
@@ -102,66 +98,121 @@ test( 'Portfolio#delStock', function(){
 
 });
 
-test( 'Client#new', function(){
-  var p1 = new Client('Bob');
-  
-  ok(p1 instanceof Client, 'p1 should be an instance of Client');
-  deepEqual(p1.name, 'Bob', 'p1 should have a name');
-  deepEqual(p1.portfolioCount, 0, 'p1 should have no portfolio');
+test('Client#new', function() {
+  var c1 = new Client('Bob Smith', 100000);
+
+  ok(c1 instanceof Client, 'c1 should be an instance of Client');
+  deepEqual(c1.name, 'Bob Smith', 100000, 'c1 should have a name and $100000');
+  deepEqual(c1.portfolioCount, 0, 'c1 should have no portfolios');
+  deepEqual(c1.cash, 100000, 'c1 has $100k');
 });
 
-test( 'Client#addPortfolio', function(){
-  var p1 = new Client('Bob');
-  var s1 = new Portfolio('Tech Stock');
-  var s2 = new Portfolio('Business Stock');
-  var s3 = new Portfolio('My Stock');
-  var s4 = new Portfolio('Live Stock');
+test('Client#addPortfolio', function() {
+  var c1 = new Client('Bob Smith');
+  var p1 = new Portfolio('Tech Stocks');
+  var p2 = new Portfolio('Health Stocks');
+  var p3 = new Portfolio('Energy Stocks');
+  var s1 = new Stock('AAPL', 50, 20);
+  var s2 = new Stock('AMZN', 150, 25);
+  var s3 = new Stock('GOOG', 250, 30);
+  var s4 = new Stock('MSFT', 350, 35);
+  var s5 = new Stock('AET', 10, 50);
 
-  p1.addPortfolio(s1);
-  p1.addPortfolio(s2);
-  p1.addPortfolio([s3, s4]);
+  p1.addStock(s1);
+  p1.addStock(s2);
+  p1.addStock([s3, s4]);
+  p2.addStock(s5);
+  c1.addPortfolio(p1);
+  c1.addPortfolio([p2, p3]);
 
-  deepEqual(p1.portfolioCount, 4, 'should have 4 portfolios');
+  deepEqual(c1.portfolioCount, 3, 'should have 3 portfolios');
 });
 
-test( 'Client#getPortfolio', function(){
-  var p1 = new Client('Bob');
-  var s1 = new Portfolio('Tech Stock');
-  var s2 = new Portfolio('Business Stock');
-  var s3 = new Portfolio('My Stock');
-  var s4 = new Portfolio('Live Stock');
+test('Client#getPortfolio', function() {
+  var c1 = new Client('Bob Smith');
+  var p1 = new Portfolio('Tech Stocks');
+  var p2 = new Portfolio('Health Stocks');
+  var p3 = new Portfolio('Energy Stocks');
+  var s1 = new Stock('AAPL', 50, 20);
+  var s2 = new Stock('AMZN', 150, 25);
+  var s3 = new Stock('GOOG', 250, 30);
+  var s4 = new Stock('MSFT', 350, 35);
+  var s5 = new Stock('AET', 10, 50);
 
-  p1.addPortfolio(s1);
-  p1.addPortfolio(s2);
-  p1.addPortfolio([s3, s4]);
+  p1.addStock(s1);
+  p1.addStock(s2);
+  p1.addStock([s3, s4]);
+  p2.addStock(s5);
+  c1.addPortfolio(p1);
+  c1.addPortfolio([p2, p3]);
 
-  var s5 = p1.getPortfolio('Tech Stock');
-  var portfolios = p1.getPortfolio(['Business Stock', 'My Stock']);
+  var px = c1.getPortfolio('Tech Stocks');
+  var py = c1.getPortfolio('Does Not Exist');
+  var pz = c1.getPortfolio(['Health Stocks', 'Energy Stocks']);
 
-  deepEqual(s5.symbol, 'Tech Stock', 'should find Tech Stock');
-  deepEqual(portfolios.length, 2, 'should find 2 portfolios');
-  deepEqual(portfolios[0].symbol, 'Business Stock', 'should get Business Stock');
-  deepEqual(portfolios[1].symbol, 'My Stock', 'should get My Stock');
+  deepEqual(px.name, 'Tech Stocks', 'should find tech portfolio');
+  ok(!py, 'should not find bad portfolio');
+  deepEqual(pz.length, 2, 'should find 2 portfolios');
+  deepEqual(pz[0].name, 'Health Stocks', 'should get health portfolio');
+  deepEqual(pz[1].name, 'Energy Stocks', 'should get energy portfolio');
+});
+test('Client#delPortfolio', function() {
+  var c1 = new Client('Bob Smith');
+  var p1 = new Portfolio('Tech Stocks');
+  var p2 = new Portfolio('Health Stocks');
+  var p3 = new Portfolio('Energy Stocks');
+  var p4 = new Portfolio('Space Stocks');
+  var s1 = new Stock('AAPL', 50, 20);
+  var s2 = new Stock('AMZN', 150, 25);
+  var s3 = new Stock('GOOG', 250, 30);
+  var s4 = new Stock('MSFT', 350, 35);
+  var s5 = new Stock('AET', 10, 50);
+
+  p1.addStock(s1);
+  p1.addStock(s2);
+  p1.addStock([s3, s4]);
+  p2.addStock(s5);
+  c1.addPortfolio(p1);
+  c1.addPortfolio([p2, p3, p4]);
+
+  var px = c1.delPortfolio('Tech Stocks');
+  var py = c1.delPortfolio('Does Not Exist');
+  var pz = c1.delPortfolio(['Health Stocks', 'Energy Stocks']);
+
+  deepEqual(c1.portfolioCount, 1, 'should have 1 remaining portfolio');
+  deepEqual(px.name, 'Tech Stocks', 'should find tech portfolio');
+  ok(!py, 'should not find bad portfolio');
+  deepEqual(pz.length, 2, 'should find 2 portfolios');
+  deepEqual(pz[0].name, 'Health Stocks', 'should get health portfolio');
+  deepEqual(pz[1].name, 'Energy Stocks', 'should get energy portfolio');
 });
 
-test( 'Client#delPortfolio', function(){
-  var p1 = new Client('Bob');
-  var s1 = new Portfolio('Tech Stock');
-  var s2 = new Portfolio('Business Stock');
-  var s3 = new Portfolio('My Stock');
-  var s4 = new Portfolio('Live Stock');
-
-  p1.addPortfolio(s1);
-  p1.addPortfolio(s2);
-  p1.addPortfolio([s3, s4]);
-
-  var s5 = p1.delPortfolio('Tech Stock');
-  var portfolios = p1.delPortfolio(['Business Stock', 'My Stock']);
-
-  deepEqual(p1.portfolioCount, 1, 'should have 1 remaining stock');
-  deepEqual(s5.symbol, 'Tech Stock', 'should find Tech Stock');
-  deepEqual(portfolios.length, 2, 'should remove 2 portfolios');
-  deepEqual(portfolios[0].symbol, 'Business Stock', 'should get Business Stock');
-  deepEqual(portfolios[1].symbol, 'My Stock', 'should get My Stock');
-
+test('Client#purchaseStock', function() {
+  stop();
+  var c1 = new Client('Bob Smith', 100000);
+  c1.purchaseStock('AAPL', 50, function(stock){
+    ok(stock instanceof Stock, 'should be a stock');
+    deepEqual(stock.shares, 50, 'should be 50 shares');
+    deepEqual(stock.symbol, 'AAPL', 'should be aapl');
+    ok(c1.cash < 100000, 'should have less than $100k');
+    start();
+  });
+  var c2 = new Client('Bob Smith', 100000);
+  c2.purchaseStock('AAPL', 25000, function(stock){
+    ok(!stock, 'should not be a stock');
+    ok(c2.cash === 100000, 'should have $100k');
+    start();
+  });
 });
+
+asyncTest('Client#sellStock', function() {
+    var c1 = new Client('Bob Smith', 100000);
+    var s1 = new Stock('AAPL', 50, 250);
+    c1.sellStock(s1, 10, function(stock){
+      ok(stock instanceof Stock, 'should be a stock');
+      deepEqual(stock.shares, 40, 'should be 40 shares');
+      deepEqual(stock.symbol, 'AAPL', 'should be aapl');
+      ok(c1.cash > 100000, 'should have less than $100k');
+      start();
+    });
+  });
