@@ -16,7 +16,7 @@ var Portfolio = (function(){
   Portfolio.prototype.addStock = function(input){
       this._stocks.push(input);
       this._stocks = _.flatten(this._stocks);
-    };
+   };
   
   Portfolio.prototype.getStock = function(input){
       var output;
