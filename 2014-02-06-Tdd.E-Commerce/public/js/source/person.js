@@ -1,4 +1,5 @@
-/* jshint unused:false */
+/* exported Person */
+/* global Cart:false */
 
 var Person = (function(){
 
@@ -6,12 +7,25 @@ var Person = (function(){
 
   function Person(name, cash){
     this.name = name;
-    this._cash = cash;
+    this.cash = cash;
+    this.cart = new Cart();
   }
 
-  Object.defineProperty(Person.prototype, 'cash', {
-    get: function(){return this._cash;}
-  });
+  Person.prototype.checkOut = function(){
+    var receipt;
+
+    if(this.cash - this.cart.total >= 0){
+      receipt = _.map(this.cart.products, function(product){
+        return product.name;
+      });
+      receipt = receipt.join(', ');
+      this.cash -= this.cart.total;
+      this.cart.products = [];
+    }
+
+    return receipt;
+  };
 
   return Person;
 })();
+

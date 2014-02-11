@@ -1,4 +1,4 @@
-/* jshint unused:false */
+/* exported Product */
 
 var Product = (function(){
 
@@ -6,12 +6,9 @@ var Product = (function(){
 
   function Product(name, price){
     this.name = name;
-    this._price = price;
+    this.price = price;
   }
-
-  Object.defineProperty(Product.prototype, 'price', {
-    get: function(){return this._price;}
-  });
 
   return Product;
 })();
+

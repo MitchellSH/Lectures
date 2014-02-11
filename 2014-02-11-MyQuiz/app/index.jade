@@ -1,0 +1,62 @@
+doctype html
+//[if IE 9]><html class="lt-ie10" lang="en" > <![endif]
+html(class='no-js', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Quiz-O-Rama
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/foundation.css')
+    link(rel='stylesheet', href='/css/app.css')
+    script(src='/js/vendor/modernizr.js')
+ body
+
+    .row
+      .small-12.columns
+        button#quiz Submit 
+        table.tftable
+          col(style='width: 60%')
+          col(style='width: 40%')
+          tr
+            th Questions
+            th Answers
+          tr
+            td#q0
+            td
+              .row
+                .small-6.columns
+                  input(type='text').answer0
+                .small-6.columns
+                  button.tiny(data-qnum=0) submit
+          tr
+            td#q1
+            td
+              .row
+                .small-6.columns
+                  input(type='text').answer1
+                .small-6.columns
+                  button.tiny(data-qnum=0) submit
+          tr
+            td#q2
+            td
+              .row
+                .small-6.columns
+                  input(type='text').answer2
+                .small-6.columns
+                  button.tiny(data-qnum=0) submit
+          tr
+            td#q3
+            td
+              .row
+                .small-6.columns
+                  input(type='text').answer3
+                .small-6.columns
+                  button.tiny(data-qnum=0) submit
+
+
+
+    script(src='/js/vendor/jquery.js')
+    script(src='/js/vendor/foundation.js')
+    script(src='/js/vendor/lodash.js')
+    script(src='/js/source/main.js')
+
