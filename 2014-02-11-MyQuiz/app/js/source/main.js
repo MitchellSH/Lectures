@@ -5,32 +5,35 @@
   $(document).ready(initialize);
 
   var questions = [
-    ['How many moons does earth have?', '1'],
-    ['How many moons does mars have?', '31'],
-    ['How many moons does mercury have?', '2'],
-    ['How many moons does jupiter have?', '4']
+    ['How many Doctors are there?', '12'],
+    ['How many years has Doctor Who been around?', '50'],
+    ['Which Doctor(number) wears a bow tie?', '11'],
+    ['Which Doctor(number) said "Allons-y"?', '10']
   ];
 
 
 
+  var random = _.shuffle(questions);
+
+
   function initialize(){
     $('#quiz').click(askQuestion);
-    $('button.tiny').click(answerQuestion);
+    $('button.tiny.radius').click(answerQuestion);
   }
 
   function askQuestion(){
-    for(var i = 0; i < questions.length; i++){
-      $('#q'+ i).text(questions[i][0]);
+    for(var i = 0; i < random.length; i++){
+      $('#q' + i).text(random[i][0]);
     }
+
   }
 
   function answerQuestion(){
     var qnum = $(this).data('qnum');
-    if($('.answer'+qnum).val()===questions[qnum][1]){
+    if($('.answer'+qnum).val()===random[qnum][1]){
       alert('right');
     }else{
       alert('wrong');
-          
     }
   }
 
