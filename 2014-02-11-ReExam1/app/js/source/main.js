@@ -34,11 +34,38 @@
 
     });
     _.pull(noVowelWords, '');
-    displayWords(pigWords, noVowelWords);
+    doTheMath(evens, odds, pigWords, noVowelWords);
+    //displayWords(pigWords, noVowelWords);
 
   }
+  
+  function doTheMath(evens, odds, pigWords, noVowelWords){
+    var sums = [];
+    var products = [];
+    for(var i = 0; i < evens.length; i++){
+      var sum = 0;
+      for(var j = 1; j <= evens[i].length; j++){
+        sum = sum + j;
 
-  function displayWords(pigWords, noVowelWords){
+      }
+      sums.push(sum);
+    }
+    
+    
+    for(var a = 0; a < odds.length; a++){
+      var product = 1;
+      for(var b = 1; b <= odds[a].length; b++){
+        product = product * b;
+
+      }
+      products.push(product);
+
+    }
+    products = _.without(products, 1);
+    displayWords(sums, products, pigWords, noVowelWords);
+  }
+
+  function displayWords(sums, products, pigWords, noVowelWords){
     var timer1 = setInterval(function(){
       if(pigWords.length){
         $('#evenslist').append('<li><span>' + pigWords[0].toLowerCase() + '</span></li>');
@@ -54,6 +81,24 @@
         noVowelWords.shift();
       }else{
         clearInterval(timer2);
+      }
+    },1000);
+    
+    var timer3 = setInterval(function(){
+      if(pigWords.length){
+        $('#evenlist').append('<li><span>' + ' ' + sums[0] +  '</span></li>');
+        sums.shift();
+      }else{
+        clearInterval(timer3);
+      }
+    },1000);
+    
+    var timer4 = setInterval(function(){
+      if(noVowelWords.length){
+        $('#oddlist').append('<li><span>' + ' ' + products[1] +  '</span></li>');
+        products.shift();
+      }else{
+        clearInterval(timer4);
       }
     },1000);
   }
